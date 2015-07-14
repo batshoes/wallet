@@ -1,0 +1,14 @@
+  
+  <% if current_user %>
+<div class="form">
+<%= flash[:notice] if flash[:notice] %>
+<%= flash[:alert] if flash[:alert] %>
+
+<%= form_for @card do |f| %>
+
+  <%= f.text_field :number, placeholder: 'Card Number', class: 'input' %>
+  <%= f.text_field :xmonth, placeholder: 'MM', class: 'input' %>
+  <%= f.text_field :xyear, placeholder: 'YYYY' %>
+<% end %>
+</div>
+<% end %>
