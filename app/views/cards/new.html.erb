@@ -5,10 +5,10 @@
 <%= flash[:alert] if flash[:alert] %>
 
 <%= form_for @card do |f| %>
-
-  <%= f.text_field :number, placeholder: 'Card Number', class: 'input' %>
-  <%= f.text_field :xmonth, placeholder: 'MM', class: 'input' %>
-  <%= f.text_field :xyear, placeholder: 'YYYY' %>
+  <%= f.text_field :cc, placeholder: 'Card Number', class: 'input' %>
+  <%= f.select :xmonth, (1..12), class: 'input' %>
+  <%= f.select :xyear, (2015..2115) %>
+  <%= f.submit  'Add Card'%>
 <% end %>
 </div>
 <% end %>

@@ -18,6 +18,25 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
   end
 
+  def edit  
+    @user = User.find params[:id]
+  end
+
+  def update
+    @user = User.find params[:id]
+    @user.update user_params
+    flash[:notice] = "Successful Update"
+    redirect_to user_path(@user.id)
+  end
+
+  def destroy
+    @user = User.find params[:id]
+    @user.destroy!
+    session.clear
+    flash[:notice] = "Bye."
+    redirect_to users_path
+  end
+
  private
 
 # Use strong_parameters for attribute whitelisting

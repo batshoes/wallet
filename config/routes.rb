@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  resources :cards
-  resources :cards
+
+  get '/cookie-example' => 'cookie_example#index'
+
   resources :sessions
   resources :usercards
   resources :cards
-  resources :users
+  resources :users do
+    resources :cards
+  end
   resources :sessions
   delete '/logout' => 'sessions#destroy'
 

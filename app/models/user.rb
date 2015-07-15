@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_numericality_of :balance, {greater_than_or_equal_to: 0}
   
   # validates :password, confirmation: true, presence: true
-
+  def full_name
+    fname + ' ' + lname
+  end
 
 end
