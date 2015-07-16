@@ -8,8 +8,7 @@ class Admin::SessionsController < ApplicationController
       if @admin.present?
         if @admin.password == params[:password]
           session[:admin_id] = @admin.id
-          raise "Success!"
-          # redirect_to admin_cards_path
+          redirect_to admin_cards_path
           flash[:alert] = "Howdy Homie"
         else 
           flash[:alert] = "Wrong Password"
@@ -21,6 +20,8 @@ class Admin::SessionsController < ApplicationController
   end
 
   def destroy
-    
+    session[:admin_id] = nil
+    flash[:alert] = "Successful Logout"
+    redirect_to root_path
   end
 end

@@ -1,4 +1,14 @@
 class CardsController < ApplicationController
+  
+  def index
+    if params[:user_id].present?
+      @user = User.find params[:user_id]
+      @cards = @user.cards
+    else
+      @cards = Card.all
+    end
+  end
+
   def create
     @card = Card.new(card_params)
     @card.users << current_user
@@ -10,14 +20,6 @@ class CardsController < ApplicationController
     @card = Card.new
   end
 
-  def index
-    if params[:user_id]
-      @user = User.find params[:user_id]
-      @cards = @user.cards
-    else
-      @cards = Card.all
-    end
-  end
 
   def edit  
     @card = Card.find params[:id]
@@ -38,7 +40,6 @@ class CardsController < ApplicationController
   def destroy
     @card = Card.find params[:id]
     @card.destroy!
-    session.clear
     flash[:notice] = "Card Deleted"
     redirect_to cards_path
   end

@@ -1,9 +1,4 @@
 <% @cards.each do |card| %>
-  <div>
-    <p>Card Owners: <%= card.users.map(&:full_name).join(', ') %></p>
-    <p>Card Type: <%= card.brand %></p>
-    <p>Card Number: <%= card.cc  %></p>
-    <p>Expires: <%= card.expiration_date %></p> 
-   <br>
-  </div>
+<%= render partial: 'card',locals:{ card: card } %>
+<br><br>
 <% end %>

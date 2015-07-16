@@ -2,9 +2,5 @@
   <div>
     <p><%= user.full_name %></p> 
     <%= link_to 'Cards', user_cards_path(user.id) %>
-     <p> <% if user.full_name == current_user.full_name  %>
-      <li><%= link_to "|Add Card|", new_card_path %></li>
-      <% end %>
-    </p>
   </div><br>
 <% end %>

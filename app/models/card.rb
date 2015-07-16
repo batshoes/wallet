@@ -1,6 +1,6 @@
 class Card < ActiveRecord::Base
-  has_many :usercards
-  has_many :users, through: :usercards
+  has_many :user_cards
+  has_many :users, through: :user_cards
 
   validates_format_of :cc, with: /\A[345]\d{11,}\Z/
 

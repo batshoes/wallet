@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :sessions
+    resources :sessions, only: [:create, :new, :destroy]
+    resources :cards, only: [:index,:destroy]
   end
 
   get '/cookie-example' => 'cookie_example#index'
 
+  post '/share-card' => 'user_cards#create', as: 'share_card'
+  delete '/share-card' => 'user_cards#destroy', as: 'destroy_share_card'
   resources :sessions
-  resources :usercards
   resources :cards
   resources :users do
     resources :cards

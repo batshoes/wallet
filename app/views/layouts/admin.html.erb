@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <% if current_admin %>
+  <div>
+    <ul>
+      <li><%= link_to "| All Cards |"%></li>
+      <li><%= link_to "| Log Out |", '/logout', method: :delete %></li>
+    </ul>
+  </div>
+  <% end %>
+</header>
+  <% if flash[:alert] || flash[:notice]%>
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+  <% end %>
+
+<%= yield %>
+</body>
+
+</html>
